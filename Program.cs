@@ -1,16 +1,23 @@
 ﻿using System.Text;
 
-Random random = new Random();
+// quantidade de caracteres + possíveis caracteres;
+int qtd = 20;
+string possiveisCaracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower() +
+                             "0123456789" + "!@#$%&*";
 
-int rdn = random.Next(2);
-int tamanhoSenha = (rdn == 0) ? 16 : 14;
-string caixaCaracteres = "ABCDEFGHIJKLMNOPQRSTUVXYZ<>:?!@#$%&*()_+{}";
+// sorteio dos possiveis caracteres;
+Random sorteio = new Random();
+int numeroSorteado = 0;
+
+// armazenar o sorteio
 StringBuilder senha = new StringBuilder();
 
-for (int cont = 0; cont < tamanhoSenha; cont++)
+// loop
+for (int x = 0; x < qtd; x++)
 {
-    int indiceCaixa = random.Next(0, caixaCaracteres.Length - 1);
-    senha.Append(caixaCaracteres[indiceCaixa]);
+    numeroSorteado = sorteio.Next(0, possiveisCaracteres.Length - 1);
+    senha.Append(possiveisCaracteres[numeroSorteado]);
 }
 
 Console.WriteLine("Senha gerada:");
